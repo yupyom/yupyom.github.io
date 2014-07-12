@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby | yupyom log]]></title>
+  <link href="http://yupyom.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://yupyom.github.io/"/>
+  <updated>2014-07-13T01:45:51+09:00</updated>
+  <id>http://yupyom.github.io/</id>
+  <author>
+    <name><![CDATA[yupyom]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopressセットアップ]]></title>
+    <link href="http://yupyom.github.io/blog/2014/07/13/setup-octopress/"/>
+    <updated>2014-07-13T00:42:29+09:00</updated>
+    <id>http://yupyom.github.io/blog/2014/07/13/setup-octopress</id>
+    <content type="html"><![CDATA[<p><a href="http://octopress.org/">Octopress</a>を使うと、<a href="https://pages.github.com/">GitHub Pages</a>にブログを公開するのが簡単になるということで、試してみる。</p>
+
+<p>手順の概要は、以下の通り。（この例ではMac OS Xでの利用を想定）</p>
+
+<ol>
+<li>GitHubアカウントを作成後、管理画面から<code>_your_account_.github.com</code>（<code>_your_account_</code>は個々のアカウント名）を作成。</li>
+<li>ターミナルから適当な場所にて <code>git clone git@github.com:imathis/octopress.git _your_account_.github.com</code> で、Octopressのリポジトリを取得。</li>
+<li>事前にbundlerをインストールしておき、<code>bundle install --path vendor/bundle</code>を実行。その後、<code>bundle exec rake install</code>でOctopressをインストール。</li>
+<li><code>bundle exec rake setup_github_pages</code> でセットアップ。必要に応じて、gitのuser.nameとuser.emailを設定し、反映せよと言われるので、メッセージに従って設定する。</li>
+<li><code>_config.yml</code>を設定。Universal Analyticsへの対応は、<a href="http://tkawachi.github.io/blog/2013/06/15/1/">tkawachi Blogのエントリー</a>が参考になる。</li>
+<li><code>bundle exec rake new_post['your entry title']</code>などとして、エントリーを作成。<code>source/_posts/</code>に<a href="http://daringfireball.net/projects/markdown/">Markdown</a>形式のファイルが出来るので編集。</li>
+<li><code>bundle exec rake preview</code>でプレビューできる。</li>
+<li><code>bundle exec rake gen_deploy</code>で公開。</li>
+</ol>
+
+
+<p>色々な人が<a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">テーマファイル</a>を公開しているので、参考にしたい。</p>
+]]></content>
+  </entry>
+  
+</feed>
