@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>yupyom log</title>
+  <title>Blog Archive - yupyom log</title>
   <meta name="author" content="yupyom">
 
   
-  <meta name="description" content="Octopressを使うと、GitHub Pagesにブログを公開するのが簡単になるということで、試してみる。 手順の概要は、以下の通り。（この例ではMac OS Xでの利用を想定） GitHubアカウントを作成後、管理画面からyour_username.github.io（ &hellip;">
+  <meta name="description" content=" Blog Archive 2014 Octopressセットアップ
+Jul 13 2014 posted in ruby Recent Posts Octopressセットアップ ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yupyom.github.io">
+  <link rel="canonical" href="http://yupyom.github.io/blog/archives">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="yupyom log" type="application/atom+xml">
@@ -73,73 +74,40 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/07/13/setup-octopress/">Octopressセットアップ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-13T00:42:29+09:00" pubdate data-updated="true">2014-07-13</time>
-        
-      </p>
+    <h1 class="entry-title">Blog Archive</h1>
     
   </header>
+  
+  <div id="blog-archives">
 
 
-  <div class="entry-content"><p><a href="http://octopress.org/">Octopress</a>を使うと、<a href="https://pages.github.com/">GitHub Pages</a>にブログを公開するのが簡単になるということで、試してみる。</p>
 
-<p>手順の概要は、以下の通り。（この例ではMac OS Xでの利用を想定）</p>
+  
+  <h2>2014</h2>
 
-<ol>
-<li>GitHubアカウントを作成後、管理画面から<code>your_username.github.io</code>（<code>your_username</code>は個々のアカウント名）というレポジトリを作成。</li>
-<li>ターミナルから適当な場所にて <code>git clone git@github.com:imathis/octopress.git your_username.github.io</code> で、Octopressのリポジトリを取得。</li>
-<li>事前にbundlerをインストールしておき、<code>bundle install --path vendor/bundle</code>を実行。その後、<code>bundle exec rake install</code>でOctopressをインストール。</li>
-<li><code>bundle exec rake setup_github_pages</code> でセットアップ。必要に応じて、gitのuser.nameとuser.emailを設定し、反映せよと言われるので、メッセージに従って設定する。</li>
-<li><code>_config.yml</code>を設定。Universal Analyticsへの対応は、<a href="http://tkawachi.github.io/blog/2013/06/15/1/">tkawachi Blogのエントリー</a>が参考になる。</li>
-<li><code>bundle exec rake new_post['your entry title']</code>などとして、エントリーを作成。<code>source/_posts/</code>に<a href="http://daringfireball.net/projects/markdown/">Markdown</a>形式のファイルが出来るので編集。</li>
-<li><code>bundle exec rake preview</code>でプレビューできる。</li>
-<li><code>bundle exec rake gen_deploy</code>で公開。</li>
-</ol>
+<article>
+  
+<h1><a href="/blog/2014/07/13/setup-octopress/">Octopressセットアップ</a></h1>
+<time datetime="2014-07-13T00:42:29+09:00" pubdate><span class='month'>Jul</span> <span class='day'>13</span> <span class='year'>2014</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/ruby/'>ruby</a></span>
+</footer>
 
 
-<h2>参考</h2>
-
-<ul>
-<li>色々な人が<a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">テーマファイル</a>を公開している。</li>
-<li>レポジトリは github.io ドメインである必要があるようだ。（github.comではうまくいかない）</li>
-</ul>
+</article>
 
 </div>
-  
-  
 
-
-    </article>
   
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+</article>
+
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -159,6 +127,7 @@
 
   
 </aside>
+
 
     </div>
   </div>
