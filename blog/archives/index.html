@@ -9,8 +9,9 @@
   <meta name="author" content="yupyom">
 
   
-  <meta name="description" content=" Blog Archive 2014 Octopressセットアップ
-Jul 13 2014 posted in ruby Recent Posts Octopressセットアップ ">
+  <meta name="description" content="Blog Archive 2014 MathJaxを使ってみる
+Jul 13 2014 posted in javascript Octopressセットアップ
+Jul 13 2014 posted in ruby Recent Posts MathJaxを使ってみる &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,6 +32,36 @@ Jul 13 2014 posted in ruby Recent Posts Octopressセットアップ ">
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
   
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -91,6 +122,20 @@ Jul 13 2014 posted in ruby Recent Posts Octopressセットアップ ">
 
 <article>
   
+<h1><a href="/blog/2014/07/13/mathjax/">MathJaxを使ってみる</a></h1>
+<time datetime="2014-07-13T12:29:42+09:00" pubdate><span class='month'>Jul</span> <span class='day'>13</span> <span class='year'>2014</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>javascript</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
 <h1><a href="/blog/2014/07/13/setup-octopress/">Octopressセットアップ</a></h1>
 <time datetime="2014-07-13T00:42:29+09:00" pubdate><span class='month'>Jul</span> <span class='day'>13</span> <span class='year'>2014</span></time>
 
@@ -113,6 +158,10 @@ Jul 13 2014 posted in ruby Recent Posts Octopressセットアップ ">
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/13/mathjax/">MathJaxを使ってみる</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/07/13/setup-octopress/">Octopressセットアップ</a>
