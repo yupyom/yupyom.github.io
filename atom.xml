@@ -4,7 +4,7 @@
   <title><![CDATA[yupyom log]]></title>
   <link href="http://yupyom.github.io/atom.xml" rel="self"/>
   <link href="http://yupyom.github.io/"/>
-  <updated>2014-07-13T13:21:50+09:00</updated>
+  <updated>2014-07-13T14:57:47+09:00</updated>
   <id>http://yupyom.github.io/</id>
   <author>
     <name><![CDATA[yupyom]]></name>
@@ -130,6 +130,7 @@ f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2} \r
   <li>レポジトリは github.io ドメインである必要があるようだ。（github.comではうまくいかない）</li>
   <li>最後のgen_deployでつまづく場合は、<a href="http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress">Stack Overflowのやりとり</a>を参考にすると良い。</li>
   <li>GitHubのレポジトリには、<code>_deploy</code>ディレクトリの中身だけが反映される仕組みのため、GitHubのGUIツールなどで上書きしないよう注意する必要がある。レポジトリは本来の意味でのマスターにはならないので、マスターデータの管理は別途行う必要があることに注意したい。</li>
+  <li>シンタックスハイライトを<a href="https://github.com/ragle/Monokai-Sublime-Text-Octopress">Monokai風</a>にするパッチなんかもある。<a href="http://pygments.org/">Pygments syntax highlighting</a>がベースらしい。</li>
 </ul>
 ]]></content>
   </entry>

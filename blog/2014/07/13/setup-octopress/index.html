@@ -154,6 +154,7 @@
   <li>レポジトリは github.io ドメインである必要があるようだ。（github.comではうまくいかない）</li>
   <li>最後のgen_deployでつまづく場合は、<a href="http://stackoverflow.com/questions/17609453/rake-gen-deploy-rejected-in-octopress">Stack Overflowのやりとり</a>を参考にすると良い。</li>
   <li>GitHubのレポジトリには、<code>_deploy</code>ディレクトリの中身だけが反映される仕組みのため、GitHubのGUIツールなどで上書きしないよう注意する必要がある。レポジトリは本来の意味でのマスターにはならないので、マスターデータの管理は別途行う必要があることに注意したい。</li>
+  <li>シンタックスハイライトを<a href="https://github.com/ragle/Monokai-Sublime-Text-Octopress">Monokai風</a>にするパッチなんかもある。<a href="http://pygments.org/">Pygments syntax highlighting</a>がベースらしい。</li>
 </ul>
 </div>
 
@@ -250,7 +251,11 @@
 
 
 
-
+<script type="text/javascript">
+$(function(){
+  $("a[href^='http']").attr('target', '_blank');
+});
+</script>
 
 </body>
 </html>
