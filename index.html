@@ -9,7 +9,8 @@
   <meta name="author" content="yupyom">
 
   
-  <meta name="description" content="Octopressのテーマを眺めていたら、mathyというテンプレートで、MathJaxが使われていた。これはイイ！ ">
+  <meta name="description" content="Octopressで任意のページを作成するには、 コマンド1
+bundle exec rake new_page[&quot;about&quot;] のようにする。source/about/index.markdownというディレクトリができるので、投稿と同じように書いていけば良い。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -60,6 +61,14 @@
 <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+
+
+
+
+
+
+
   
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -111,6 +120,50 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/07/13/octopress-pages/">Octopressで任意のページを作成する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-13T15:53:54+09:00" pubdate data-updated="true">2014-07-13</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Octopressで任意のページを作成するには、</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>コマンド</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">bundle <span class="nb">exec </span>rake new_page<span class="o">[</span><span class="s2">&quot;about&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>のようにする。<code>source/about/index.markdown</code>というディレクトリができるので、投稿と同じように書いていけば良い。</p>
+
+<p>そうして作ったのが、<a href="/example-0001/">こちらのページ</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/07/13/mathjax/">MathJaxを使ってみる</a></h1>
     
     
@@ -134,7 +187,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Octopressのテーマを眺めていたら、<a href="https://github.com/stchangg/mathy">mathy</a>というテンプレートで、<a href="http://www.mathjax.org/">MathJax</a>が使われていた。これはイイ！</p>
+  <div class="entry-content"><p>Octopressのテーマを眺めていたら、<a href="https://github.com/stchangg/mathy">mathy</a>というテンプレートで、<a href="http://www.mathjax.org/">MathJax</a>が使われていた。これはいい。</p>
 
 </div>
   
@@ -199,6 +252,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/13/octopress-pages/">Octopressで任意のページを作成する</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/07/13/mathjax/">MathJaxを使ってみる</a>

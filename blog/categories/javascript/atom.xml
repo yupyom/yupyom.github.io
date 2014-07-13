@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | yupyom log]]></title>
   <link href="http://yupyom.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://yupyom.github.io/"/>
-  <updated>2014-07-13T14:57:47+09:00</updated>
+  <updated>2014-07-13T17:07:19+09:00</updated>
   <id>http://yupyom.github.io/</id>
   <author>
     <name><![CDATA[yupyom]]></name>
@@ -18,7 +18,7 @@
     <link href="http://yupyom.github.io/blog/2014/07/13/mathjax/"/>
     <updated>2014-07-13T12:29:42+09:00</updated>
     <id>http://yupyom.github.io/blog/2014/07/13/mathjax</id>
-    <content type="html"><![CDATA[<p>Octopressのテーマを眺めていたら、<a href="https://github.com/stchangg/mathy">mathy</a>というテンプレートで、<a href="http://www.mathjax.org/">MathJax</a>が使われていた。これはイイ！</p>
+    <content type="html"><![CDATA[<p>Octopressのテーマを眺めていたら、<a href="https://github.com/stchangg/mathy">mathy</a>というテンプレートで、<a href="http://www.mathjax.org/">MathJax</a>が使われていた。これはいい。</p>
 
 <!-- more -->
 
@@ -69,7 +69,7 @@
 f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2} \right)
 </script>
 
-<p>いい感じですね！</p>
+<p>いい感じ。</p>
 ]]></content>
   </entry>
   

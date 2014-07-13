@@ -4,7 +4,7 @@
   <title><![CDATA[yupyom log]]></title>
   <link href="http://yupyom.github.io/atom.xml" rel="self"/>
   <link href="http://yupyom.github.io/"/>
-  <updated>2014-07-13T14:57:47+09:00</updated>
+  <updated>2014-07-13T17:07:19+09:00</updated>
   <id>http://yupyom.github.io/</id>
   <author>
     <name><![CDATA[yupyom]]></name>
@@ -14,11 +14,28 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Octopressで任意のページを作成する]]></title>
+    <link href="http://yupyom.github.io/blog/2014/07/13/octopress-pages/"/>
+    <updated>2014-07-13T15:53:54+09:00</updated>
+    <id>http://yupyom.github.io/blog/2014/07/13/octopress-pages</id>
+    <content type="html"><![CDATA[<p>Octopressで任意のページを作成するには、</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>コマンド</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">bundle <span class="nb">exec </span>rake new_page<span class="o">[</span><span class="s2">&quot;about&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>のようにする。<code>source/about/index.markdown</code>というディレクトリができるので、投稿と同じように書いていけば良い。</p>
+
+<p>そうして作ったのが、<a href="http://yupyom.github.io/example-0001/">こちらのページ</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[MathJaxを使ってみる]]></title>
     <link href="http://yupyom.github.io/blog/2014/07/13/mathjax/"/>
     <updated>2014-07-13T12:29:42+09:00</updated>
     <id>http://yupyom.github.io/blog/2014/07/13/mathjax</id>
-    <content type="html"><![CDATA[<p>Octopressのテーマを眺めていたら、<a href="https://github.com/stchangg/mathy">mathy</a>というテンプレートで、<a href="http://www.mathjax.org/">MathJax</a>が使われていた。これはイイ！</p>
+    <content type="html"><![CDATA[<p>Octopressのテーマを眺めていたら、<a href="https://github.com/stchangg/mathy">mathy</a>というテンプレートで、<a href="http://www.mathjax.org/">MathJax</a>が使われていた。これはいい。</p>
 
 <!-- more -->
 
@@ -98,7 +115,7 @@
 f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2} \right)
 </script>
 
-<p>いい感じですね！</p>
+<p>いい感じ。</p>
 ]]></content>
   </entry>
   

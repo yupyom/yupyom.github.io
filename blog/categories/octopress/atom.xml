@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: ruby | yupyom log]]></title>
-  <link href="http://yupyom.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <title><![CDATA[Category: octopress | yupyom log]]></title>
+  <link href="http://yupyom.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://yupyom.github.io/"/>
   <updated>2014-07-13T17:07:19+09:00</updated>
   <id>http://yupyom.github.io/</id>
@@ -27,6 +27,66 @@ bundle exec rake new_page["about"]
 <p>のようにする。<code>source/about/index.markdown</code>というディレクトリができるので、投稿と同じように書いていけば良い。</p>
 
 <p>そうして作ったのが、<a href="/example-0001/">こちらのページ</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MathJaxを使ってみる]]></title>
+    <link href="http://yupyom.github.io/blog/2014/07/13/mathjax/"/>
+    <updated>2014-07-13T12:29:42+09:00</updated>
+    <id>http://yupyom.github.io/blog/2014/07/13/mathjax</id>
+    <content type="html"><![CDATA[<p>Octopressのテーマを眺めていたら、<a href="https://github.com/stchangg/mathy">mathy</a>というテンプレートで、<a href="http://www.mathjax.org/">MathJax</a>が使われていた。これはいい。</p>
+
+<!-- more -->
+
+<h2 id="section">主な準備</h2>
+
+<p>1) <code>source/_includes/custom/head.html</code>に以下を追加する。</p>
+
+<p>``` html source/_includes/custom/head.html
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script></p>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<p>```</p>
+
+<p>2) <code>Gemfile</code>の<code>gem 'rdiscount', '~&gt; 2.0'</code>を<code>gem 'kramdown'</code>に変更し、bundle installをし直す。これは、rdiscountではMathJaxのマークアップがうまく通らないためらしい。</p>
+
+<p>3) <code>_config.yml</code>の<code>markdown: rdiscount</code>を<code>markdown: kramdown</code>に変更。</p>
+
+<p>で、試してみる。</p>
+
+<script type="math/tex; mode=display">
+f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2} \right)
+</script>
+
+<p>いい感じ。</p>
 ]]></content>
   </entry>
   
