@@ -4,7 +4,7 @@
   <title><![CDATA[yupyom log]]></title>
   <link href="http://yupyom.github.io/atom.xml" rel="self"/>
   <link href="http://yupyom.github.io/"/>
-  <updated>2014-07-13T17:07:19+09:00</updated>
+  <updated>2014-07-13T23:38:18+09:00</updated>
   <id>http://yupyom.github.io/</id>
   <author>
     <name><![CDATA[yupyom]]></name>
@@ -12,6 +12,222 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[jQueryのページ読み込み]]></title>
+    <link href="http://yupyom.github.io/blog/2014/07/13/jquery-load-event/"/>
+    <updated>2014-07-13T19:33:45+09:00</updated>
+    <id>http://yupyom.github.io/blog/2014/07/13/jquery-load-event</id>
+    <content type="html"><![CDATA[<p>jQueryでは、ページ読み込みの処理方法が大きく2つある。.ready()と.on()について整理しておく。</p>
+
+<!-- more -->
+
+<h2 id="ready">.ready()</h2>
+
+<p><code>load</code>イベントの発生は、画像を含め、ページに関連するリソースがすべて読み込まれた時点となる。JavaScriptを使ってHTML要素にアクセスしたり、CSS属性を変更する場合、大半のケースでここまで待つ必要はなく、DOMの準備ができた段階で良い。jQueryの<code>.ready()</code>メソッドはこういう場合に便利。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>.ready()の基本構文の形式</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">$</span><span class="p">(</span> <span class="nb">document</span> <span class="p">).</span><span class="nx">ready</span><span class="p">(</span> <span class="nx">handler</span> <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>ハンドラは無名関数で実装される場合が多いので、次のような構文となる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>.ready()の基本構文（無名関数による実装）</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">$</span><span class="p">(</span> <span class="nb">document</span> <span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">//ハンドラの中身を書く</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>また、短縮構文として</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>.ready()の短縮構文の形式</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">$</span><span class="p">(</span> <span class="nx">handler</span> <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>が用意されている。よって、</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>.ready()の短縮構文（無名関数による実装）</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">// ハンドラを記述</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>がよく使われる。</p>
+
+<h3 id="section">参考）他のフレームワークと併用する場合</h3>
+
+<p><a href="http://prototypejs.org/">Prototype</a>など、他のフレームワークと併用する場合、名前空間の衝突を避けるために<code>$.noConflict() </code>を宣言することがある。この場合でも、コードの使い回しをする都合、.ready()の中だけは<code>$</code>が使えると便利だ。その場合は、</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>.ready()の別の使い方</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">jQuery</span><span class="p">(</span> <span class="nb">document</span> <span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">$</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">// ハンドラの中に限り、 $ は jQueryオブジェクトを指す</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="on">.on()</h2>
+
+<p>要素に対してイベントハンドラを付け加えるためのメソッド。jQuery 1.7が登場するまでは、<code>.bind()</code>や<code>.live()</code>、<code>.delegate()</code>が使い分けられていた。以下は典型例のみだが、それぞれに適した用途があって煩雑だった。それらが、ようやく<code>.on()</code>にすべて統合され、シンプルになった。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>.on()、.bind()、.delegate()の比較（典型例）</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// 1) .bind() -- jQuery 1.0以降</span>
+</span><span class="line"><span class="c1">// 単一のイベントに対するハンドラを指定できる</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">).</span><span class="nx">bind</span><span class="p">(</span> <span class="nx">eventType</span><span class="p">,</span> <span class="nx">handler</span> <span class="p">);</span>
+</span><span class="line"><span class="c1">// 2) .live() -- jQuery 1.3以降（1.7で非推奨、1.9で削除）</span>
+</span><span class="line"><span class="c1">// 1.4以降で、スペース区切りで複数のイベントを指定可能に</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">).</span><span class="nx">live</span><span class="p">(</span> <span class="nx">events</span><span class="p">,</span> <span class="nx">handler</span> <span class="p">)</span>
+</span><span class="line"><span class="c1">// 3) .delegate() -- jQuery 1.4.2以降</span>
+</span><span class="line"><span class="c1">// 親要素にイベントを割り当て、後で追加された子要素にもハンドラが</span>
+</span><span class="line"><span class="c1">// 実行されるようにできる</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">).</span><span class="nx">delegate</span><span class="p">(</span> <span class="nx">selector</span><span class="p">,</span> <span class="nx">eventType</span><span class="p">,</span> <span class="nx">handler</span> <span class="p">);</span>
+</span><span class="line"><span class="c1">// 4) .on() -- jQuery 1.7以降</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">).</span><span class="nx">on</span><span class="p">(</span> <span class="nx">events</span><span class="p">[,</span> <span class="nx">selector</span><span class="p">],</span> <span class="nx">handler</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>.on()</code>を使って、<code>load</code>イベントのトリガーを設けるには、以下のようにする。古くからは、<code>.load()</code>というメソッドもあるが、1.8で非推奨となった。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>.on()による読み込み制御</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">$</span><span class="p">(</span> <span class="nb">window</span> <span class="p">).</span><span class="nx">on</span><span class="p">(</span> <span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">// 画像もすべて読み込まれた後で実行される</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="section-1">実験</h2>
+
+<p>.ready()と.on()について<a href="http://yupyom.github.io/example-0003/">実験してみる</a>。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>どちらが先に実行される？</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">$</span><span class="p">(</span> <span class="nb">window</span> <span class="p">).</span><span class="nx">on</span><span class="p">(</span> <span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#message&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;&lt;li&gt;1つ目の&lt;code&gt;$( window ).on( &#39;load&#39;, handler )&lt;/code&gt;が呼び出されました。&lt;/li&gt;&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#message&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;&lt;li&gt;1つ目の&lt;code&gt;$( handler )&lt;/code&gt;が呼び出されました。&lt;/li&gt;&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span> <span class="nb">window</span> <span class="p">).</span><span class="nx">on</span><span class="p">(</span> <span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#message&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;&lt;li&gt;2つ目の&lt;code&gt;$( window ).on( &#39;load&#39;, handler )&lt;/code&gt;が呼び出されました。&lt;/li&gt;&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#message&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;&lt;li&gt;2つ目の&lt;code&gt;$( handler )&lt;/code&gt;が呼び出されました。&lt;/li&gt;&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Chart.jsを使う]]></title>
+    <link href="http://yupyom.github.io/blog/2014/07/13/chart-js/"/>
+    <updated>2014-07-13T18:46:45+09:00</updated>
+    <id>http://yupyom.github.io/blog/2014/07/13/chart-js</id>
+    <content type="html"><![CDATA[<p><a href="http://www.chartjs.org/">Chart.js</a>はHTML5 canvasベース、インタラクティブ、レスポンシブ対応で軽量なチャート生成フレームワークらしい。ということで、テスト。</p>
+
+<p><a href="http://yupyom.github.io/example-0002/">Chart.jsのサンプル</a></p>
+
+<!-- more -->
+
+<p>ほぼサンプルコードままなのだが、こんな感じでさくっといけるということで。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>chart.jsの読み込みとセットアップ</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;Chart.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="c1">//rsf=randomScalingFactor</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">rsf</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="p">)};</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">barChartData</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">labels</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;1月&quot;</span><span class="p">,</span><span class="s2">&quot;2月&quot;</span><span class="p">,</span><span class="s2">&quot;3月&quot;</span><span class="p">,</span><span class="s2">&quot;4月&quot;</span><span class="p">,</span><span class="s2">&quot;5月&quot;</span><span class="p">,</span><span class="s2">&quot;6月&quot;</span><span class="p">],</span>
+</span><span class="line">  <span class="nx">datasets</span> <span class="o">:</span> <span class="p">[</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">      <span class="nx">fillColor</span> <span class="o">:</span> <span class="s2">&quot;rgba(220,220,220,0.5)&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">strokeColor</span> <span class="o">:</span> <span class="s2">&quot;rgba(220,220,220,0.8)&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">highlightFill</span><span class="o">:</span> <span class="s2">&quot;rgba(220,220,220,0.75)&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">highlightStroke</span><span class="o">:</span> <span class="s2">&quot;rgba(220,220,220,1)&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">data</span> <span class="o">:</span> <span class="p">[</span><span class="nx">rsf</span><span class="p">(),</span><span class="nx">rsf</span><span class="p">(),</span><span class="nx">rsf</span><span class="p">(),</span><span class="nx">rsf</span><span class="p">(),</span><span class="nx">rsf</span><span class="p">(),</span><span class="nx">rsf</span><span class="p">()]</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">      <span class="nx">fillColor</span> <span class="o">:</span> <span class="s2">&quot;rgba(151,187,205,0.5)&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">strokeColor</span> <span class="o">:</span> <span class="s2">&quot;rgba(151,187,205,0.8)&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">highlightFill</span> <span class="o">:</span> <span class="s2">&quot;rgba(151,187,205,0.75)&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">highlightStroke</span> <span class="o">:</span> <span class="s2">&quot;rgba(151,187,205,1)&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">data</span> <span class="o">:</span> <span class="p">[</span><span class="nx">rsf</span><span class="p">(),</span><span class="nx">rsf</span><span class="p">(),</span><span class="nx">rsf</span><span class="p">(),</span><span class="nx">rsf</span><span class="p">(),</span><span class="nx">rsf</span><span class="p">(),</span><span class="nx">rsf</span><span class="p">()]</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">]</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#myChart&quot;</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">myNewChart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Chart</span><span class="p">(</span><span class="nx">ctx</span><span class="p">).</span><span class="nx">Bar</span><span class="p">(</span><span class="nx">barChartData</span><span class="p">,</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">responsive</span> <span class="o">:</span> <span class="kc">true</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>canvasタグには、heightとwidthを入れるが、それは生成されるグラフの縦横比になるようで、レスポンシブな形で貼付けることができる。   </p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>canvasタグ</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;width: 100%&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">&quot;myChart&quot;</span> <span class="na">height=</span><span class="s">&quot;300&quot;</span> <span class="na">width=</span><span class="s">&quot;500&quot;</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopressで任意のページを作成する]]></title>

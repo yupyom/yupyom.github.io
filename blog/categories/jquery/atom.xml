@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: javascript | yupyom log]]></title>
-  <link href="http://yupyom.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <title><![CDATA[Category: jquery | yupyom log]]></title>
+  <link href="http://yupyom.github.io/blog/categories/jquery/atom.xml" rel="self"/>
   <link href="http://yupyom.github.io/"/>
   <updated>2014-07-13T23:38:18+09:00</updated>
   <id>http://yupyom.github.io/</id>
@@ -109,122 +109,6 @@ $(function(){
   $("#message").append("&lt;li&gt;2つ目の&lt;code&gt;$( handler )&lt;/code&gt;が呼び出されました。&lt;/li&gt;")
 });
 </code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Chart.jsを使う]]></title>
-    <link href="http://yupyom.github.io/blog/2014/07/13/chart-js/"/>
-    <updated>2014-07-13T18:46:45+09:00</updated>
-    <id>http://yupyom.github.io/blog/2014/07/13/chart-js</id>
-    <content type="html"><![CDATA[<p><a href="http://www.chartjs.org/">Chart.js</a>はHTML5 canvasベース、インタラクティブ、レスポンシブ対応で軽量なチャート生成フレームワークらしい。ということで、テスト。</p>
-
-<p><a href="/example-0002/">Chart.jsのサンプル</a></p>
-
-<!-- more -->
-
-<p>ほぼサンプルコードままなのだが、こんな感じでさくっといけるということで。</p>
-
-<p><code>html chart.jsの読み込みとセットアップ
-&lt;script src="Chart.min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript"&gt;
-//rsf=randomScalingFactor
-var rsf = function(){ return Math.round(Math.random()*100)};
-var barChartData = {
-  labels : ["1月","2月","3月","4月","5月","6月"],
-  datasets : [
-    {
-      fillColor : "rgba(220,220,220,0.5)",
-      strokeColor : "rgba(220,220,220,0.8)",
-      highlightFill: "rgba(220,220,220,0.75)",
-      highlightStroke: "rgba(220,220,220,1)",
-      data : [rsf(),rsf(),rsf(),rsf(),rsf(),rsf()]
-    },
-    {
-      fillColor : "rgba(151,187,205,0.5)",
-      strokeColor : "rgba(151,187,205,0.8)",
-      highlightFill : "rgba(151,187,205,0.75)",
-      highlightStroke : "rgba(151,187,205,1)",
-      data : [rsf(),rsf(),rsf(),rsf(),rsf(),rsf()]
-    }
-  ]
-}
-$(function() {
-  var ctx = $("#myChart").get(0).getContext("2d");
-  var myNewChart = new Chart(ctx).Bar(barChartData, {
-    responsive : true
-  });
-});
-&lt;/script&gt;
-</code></p>
-
-<p>canvasタグには、heightとwidthを入れるが、それは生成されるグラフの縦横比になるようで、レスポンシブな形で貼付けることができる。   </p>
-
-<p><code>html canvasタグ
-&lt;div style="width: 100%"&gt;
-  &lt;canvas id="myChart" height="300" width="500"&gt;&lt;/canvas&gt;
-&lt;/div&gt;
-</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MathJaxを使ってみる]]></title>
-    <link href="http://yupyom.github.io/blog/2014/07/13/mathjax/"/>
-    <updated>2014-07-13T12:29:42+09:00</updated>
-    <id>http://yupyom.github.io/blog/2014/07/13/mathjax</id>
-    <content type="html"><![CDATA[<p>Octopressのテーマを眺めていたら、<a href="https://github.com/stchangg/mathy">mathy</a>というテンプレートで、<a href="http://www.mathjax.org/">MathJax</a>が使われていた。これはいい。</p>
-
-<!-- more -->
-
-<h2 id="section">主な準備</h2>
-
-<p>1) <code>source/_includes/custom/head.html</code>に以下を追加する。</p>
-
-<p>``` html source/_includes/custom/head.html
-<!-- MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script></p>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-<p>```</p>
-
-<p>2) <code>Gemfile</code>の<code>gem 'rdiscount', '~&gt; 2.0'</code>を<code>gem 'kramdown'</code>に変更し、bundle installをし直す。これは、rdiscountではMathJaxのマークアップがうまく通らないためらしい。</p>
-
-<p>3) <code>_config.yml</code>の<code>markdown: rdiscount</code>を<code>markdown: kramdown</code>に変更。</p>
-
-<p>で、試してみる。</p>
-
-<script type="math/tex; mode=display">
-f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2} \right)
-</script>
-
-<p>いい感じ。</p>
 ]]></content>
   </entry>
   
