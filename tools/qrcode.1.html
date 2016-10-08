@@ -56,7 +56,7 @@
     <a href="#NAME">NAME</a>
     <a href="#SYNOPSIS">SYNOPSIS</a>
     <a href="#DESCRIPTION">DESCRIPTION</a>
-    <a href="#OPTIONS">OPTIONS</a>
+    <a href="#FUNCTIONS">FUNCTIONS</a>
   </div>
 
   <ol class='man-decor man-head man head'>
@@ -72,20 +72,28 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>qrcode</code> &lt;string&gt;...<br /></p>
+<p><code>qrcode</code> <u>string</u> <u>...</u><br />
+echo "str1 str2" | <code>qrcode</code></p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
-<p><strong>qrcode</strong> convert strings to PNG-formatted qrcode images.</p>
+<p><strong>qrcode</strong> convert strings to PNG-formatted qrcode images.<br />
+Without arguments, <code>qrcode</code> show quick help.</p>
 
-<p>With no &lt;string&gt; arguments, <code>qrcode</code> show quick help.</p>
+<h2 id="FUNCTIONS">FUNCTIONS</h2>
 
-<h2 id="OPTIONS">OPTIONS</h2>
-
-<dl>
-<dt><code>-h</code>, <code>--help</code></dt><dd><p>Show help.</p></dd>
-<dt><code>-v</code>, <code>--version</code></dt><dd><p>Print the version.</p></dd>
-</dl>
+<ul>
+<li><p><code>-s</code>, <code>--size</code> <u>value</u><br />
+Set a pixel size of a sides. (default: 1024)</p></li>
+<li><p><code>-l</code>, <code>--level</code> <u>level</u><br />
+Set a error correction level. (default: L, optional: M,Q,H)</p></li>
+<li><p><code>--sep</code> "<u>sep</u>"<br />
+Set a separator of input string. (default: " ")</p></li>
+<li><p><code>-h</code>, <code>--help</code><br />
+Show help.</p></li>
+<li><p><code>-v</code>, <code>--version</code>
+Print the version.</p></li>
+</ul>
 
 
 
